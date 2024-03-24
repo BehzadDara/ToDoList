@@ -44,17 +44,17 @@ public partial class MainPageViewModel(ToDoListDbContext dbContext) : Observable
     [RelayCommand]
     void Add()
     {
-        var x = dbContext.ToDoItems.ToList();
+        //var x = dbContext.ToDoItems.ToList();
         if (string.IsNullOrEmpty(Title) || !Priority.HasValue || Priority.Value < 1 || Priority.Value > 99)
         {
             return;
         }
 
-        //Items.Add(new(Title, Priority.Value));
-        //OnPropertyChanged(nameof(OrderedItems));
+        Items.Add(new(Title, Priority.Value));
+        OnPropertyChanged(nameof(OrderedItems));
 
-        dbContext.ToDoItems.Add(new(Title, Priority!.Value));
-        dbContext.SaveChanges();
+        //dbContext.ToDoItems.Add(new(Title, Priority!.Value));
+        //dbContext.SaveChanges();
 
         Title = string.Empty;
         Priority = null;
@@ -66,8 +66,8 @@ public partial class MainPageViewModel(ToDoListDbContext dbContext) : Observable
         var toDoItem = Items.First(x => x.Id == id);
         toDoItem.IsDone = !toDoItem.IsDone;
 
-        dbContext.Update(toDoItem);
-        dbContext.SaveChanges();
+        //dbContext.Update(toDoItem);
+        //dbContext.SaveChanges();
 
         toDoItem.TitleTextDecoration = toDoItem.IsDone ? TextDecorations.Strikethrough : TextDecorations.None;
         toDoItem.DoneButtonText = toDoItem.IsDone ? "Renew" : "Done";
@@ -79,10 +79,10 @@ public partial class MainPageViewModel(ToDoListDbContext dbContext) : Observable
     void Delete(Guid id)
     {
         var toDoItem = Items.First(x => x.Id == id);
-        //Items.Remove(toDoItem);
+        Items.Remove(toDoItem);
 
-        dbContext.Remove(toDoItem);
-        dbContext.SaveChanges();
+        //dbContext.Remove(toDoItem);
+        //dbContext.SaveChanges();
 
         OnPropertyChanged(nameof(OrderedItems));
     }

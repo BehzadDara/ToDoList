@@ -7,19 +7,19 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
+            Padding="5,5"
+            Spacing="15">
 
             <Grid 
                 RowDefinitions="100,auto,*" 
-                ColumnDefinitions=".60*,.20*,.20*" 
-                Padding="10" 
-                ColumnSpacing="10" 
+                ColumnDefinitions=".55*,.25*,.20*" 
+                Padding="5" 
+                ColumnSpacing="5" 
                 RowSpacing="10">
 
                 <Image 
                     Grid.ColumnSpan="3" 
-                    Source="logo.png" 
+                    Source="image.png"
                     BackgroundColor="#FAE8E0"/>
 
                 <Entry 
@@ -27,19 +27,23 @@
                     Grid.Row="1" 
                     Grid.Column="0"
                     FontSize="12"
+                    FontFamily="OpenSansRegular"
 				    Text="{Binding Title}" />
                 <Entry 
                     Placeholder="Priority" 
                     Grid.Row="1" 
                     Grid.Column="1"
                     FontSize="10"
+                    FontFamily="OpenSansRegular"
 				    Text="{Binding Priority}" />
                 <Button 
                     Text="Add" 
                     Grid.Row="1" 
                     Grid.Column="2"
                     TextColor="Black"
+                    BackgroundColor="#FAE8E0"
                     FontSize="10"
+                    FontFamily="OpenSansRegular"
                     HorizontalOptions="FillAndExpand"
 				    Command="{Binding AddCommand}"/>
                 
@@ -51,40 +55,52 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid Padding="10"
-                              ColumnSpacing="5" 
-                              RowSpacing="10"
-                              ColumnDefinitions=".40*,.20*,.20*,.20*" >
+                        <Grid Padding="5"
+                              ColumnSpacing="3" 
+                              RowSpacing="5"
+                              ColumnDefinitions=".60*,.20*,.20*" >
 
-                            <Frame Grid.Column="0" BorderColor="#EF7C8E" CornerRadius="5" >
+                            <Frame 
+                                Grid.Column="0" 
+                                BorderColor="#EF7C8E" 
+                                CornerRadius="5"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="White">
+
                                 <Label
                                     FontSize="12"
+                                    FontFamily="OpenSansRegular"
                                     TextColor="Black"
-                                    TextDecorations="{Binding TitleTextDecoration}"
-                                    Text="{Binding Title}"/>
-                            </Frame>
+                                    TextDecorations="{Binding TitleTextDecoration}">
 
-                            <Frame Grid.Column="1" BorderColor="#EF7C8E" CornerRadius="5" HorizontalOptions="FillAndExpand">
-                                <Label
-                                    FontSize="12"
-                                    TextColor="Black"
-                                    HorizontalOptions="Center"
-                                    TextDecorations="{Binding TitleTextDecoration}"
-                                    Text="{Binding Priority}"/>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                            <Binding Path="Priority" />
+                                            <Binding Path="Title" />
+                                        </MultiBinding>
+                                    </Label.Text>
+
+                                </Label>
+
                             </Frame>
 
                             <Button 
                                 Text="{Binding DoneButtonText}" 
-                                Grid.Column="2"
+                                Grid.Column="1"
                                 TextColor="Black"
+                                BackgroundColor="#FAE8E0"
                                 FontSize="10"
+                                FontFamily="OpenSansRegular"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=UpdateCommand}"
                                 CommandParameter="{Binding Id}"/>
+                            
                             <Button 
                                 Text="Delete" 
-                                Grid.Column="3"
+                                Grid.Column="2"
                                 TextColor="Black"
+                                BackgroundColor="#FAE8E0"
                                 FontSize="10"
+                                FontFamily="OpenSansRegular"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=DeleteCommand}"
                                 CommandParameter="{Binding Id}"/>
                             

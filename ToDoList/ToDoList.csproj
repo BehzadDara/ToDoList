@@ -27,10 +27,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="image.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<MauiIcon Include="logo.png" ForegroundFile="logo.png" Color="#FAE8E0" />
 		<MauiSplashScreen Include="logo.png" Color="#FAE8E0" BaseSize="128,128" />
 		<MauiImage Include="image.png" Resize="True" BaseSize="300,185" />
@@ -38,6 +34,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="EntityFramework" Version="6.4.4" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />

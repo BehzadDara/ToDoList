@@ -69,9 +69,6 @@ public partial class MainPageViewModel(ToDoListDbContext dbContext) : Observable
         //dbContext.Update(toDoItem);
         //dbContext.SaveChanges();
 
-        toDoItem.TitleTextDecoration = toDoItem.IsDone ? TextDecorations.Strikethrough : TextDecorations.None;
-        toDoItem.DoneButtonText = toDoItem.IsDone ? "Renew" : "Done";
-
         OnPropertyChanged(nameof(OrderedItems));
     }
 

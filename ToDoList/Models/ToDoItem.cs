@@ -9,6 +9,18 @@ public class ToDoItem(string title, int priority)
     public int Priority { get; set; } = priority;
 
 
-    public TextDecorations TitleTextDecoration { get; set; } = TextDecorations.None;
-    public string DoneButtonText { get; set; } = "Done";
+    public TextDecorations TitleTextDecoration 
+    {
+        get
+        {
+            return IsDone ? TextDecorations.Strikethrough : TextDecorations.None;
+        }
+    } 
+    public string DoneButtonText 
+    { 
+        get
+        {
+            return IsDone ? "Renew" : "Done";
+        }
+    }
 }
